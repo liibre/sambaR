@@ -1,0 +1,21 @@
+Package: sambaR
+Title: Killing saudade by translating Brazilian music
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Andrea",
+           family = "Sánchez-Tapia",
+           role = c("aut", "cre"),
+           email = "andreasancheztapia@gmail.com",
+           comment = c(ORCID = "0000-0002-3521-4338"))
+Description: Translate lyrics from Genius.com using the google translate API
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1.9000
+Imports:
+ fs,
+ genius,
+ googleLanguageR,
+ readr,
+ tibble

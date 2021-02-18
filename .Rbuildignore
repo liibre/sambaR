@@ -1,0 +1,6 @@
+vignettes/articles/
+^R/get_playlist\.R$
+^LICENSE\.md$
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.httr-oauth$
