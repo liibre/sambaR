@@ -44,7 +44,7 @@ remotes::install_github("AndreaSanchezTapia/sambaR")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+There’s only one function in the package, `translate_lyrics()`
 
 ``` r
 devtools::load_all()
