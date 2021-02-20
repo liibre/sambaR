@@ -7,8 +7,8 @@ Authors@R:
            role = c("aut", "cre"),
            email = "andreasancheztapia@gmail.com",
            comment = c(ORCID = "0000-0002-3521-4338"))
-Description: Translate lyrics from Genius.com using the google translate API
-License: MIT
+Description: Translate lyrics from Genius using the google translate API.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -18,4 +18,5 @@ Imports:
  genius,
  googleLanguageR,
  readr,
+ shiny,
  tibble

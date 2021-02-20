@@ -9,6 +9,8 @@
 #' @param song The quoted name of the song. Spelling matters, capitalization 
 #' does not. See `genius::genius_lyrics()`
 #' @param target The target language
+#' @param destdir The folder to save the lyrics. Defaults to the current 
+#' working directory "."
 #' @param ... Other arguments for gl_translate
 #'
 #' @return A two-column tibble with the original and the translated lyrics

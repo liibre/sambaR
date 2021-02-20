@@ -15,6 +15,9 @@ does not. See \code{genius::genius_lyrics()}}
 
 \item{target}{The target language}
 
+\item{destdir}{The folder to save the lyrics. Defaults to the current
+working directory "."}
+
 \item{...}{Other arguments for gl_translate}
 }
 \value{

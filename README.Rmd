@@ -1,0 +1,87 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# sambaR
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Download and translate songs from the Genius database and the google translate API.
+This package was created out of saudade to explain some samba lyrics to our friends in the US, but can be used to translate any lyrics available in the Genius database. Say you like Turkish music but don't understand 99.7% of the lyrics (random example).
+
+This is basically package `genius` meets package `googleLanguageR` and I thank everybody involved.
+
+The API for google translate must be configured, first in the cloud, then downloading the secret key in JSON format and saving it somewhere, then configuring .Renviron (usually in `~/.Renviron`) with 
+
+`GL_AUTH=path_to_that_json_file.json`
+
+The package with autenthicate automatically when loading.
+
+I'll try to detail this step better in the future but everything is in the `googleLanguageR` package documentation.
+
+
+## Installation
+
+You can install the released version of sambaR from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("sambaR")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("AndreaSanchezTapia/sambaR")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example, message=FALSE, warning=FALSE}
+devtools::load_all()
+#library(sambaR)
+library(googleLanguageR)
+```
+
+
+```{r, echo=F}
+googleLanguageR::gl_auth("/Users/andreasancheztapia/Documents/3_coleguinhas/2021_carnaval/sambaR/inst/shiny-examples/sambaR/glkey.json")
+```
+
+```{r ex2}
+## basic example code
+hoje <- sambaR::translate_lyrics(
+  artist = "caetano veloso",
+  song = "é hoje",
+  target = "es",
+  destdir = "inst/shiny-examples/sambaR"
+)
+```
+
+The function will return a two-column tibble with the lyrics and the translated lyrics. 
+
+```{r}
+hoje
+```
+
+I should add some error checks in case Genius doesn't find the lyrics. Bear in mind that Genius doesn't care about capitalization but it does about spelling _but_ it does not work well with some non-ascii characters, so avoid accents and ç.
+
+Lastly, the search will automatically create a subfolder with the artist's name and the lyrics, inside `destdir` (default: current wd). This is not optional for now and intends to avoid repeated queries to both Genius and google translate.
+
+## Shiny app
+
+A Shiny app was deployed and is available by running function `runExample()` or at https://andreasancheztapia.shinyapps.io/sambaR/
