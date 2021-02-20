@@ -9,8 +9,6 @@
 
 library(shiny)
 library(googleLanguageR)
-googleLanguageR::gl_auth("glkey.json")
-#devtools::load_all()
 if (!require(sambaR)) remotes::install_github("andreasancheztapia/sambaR")
 library(sambaR)
 # Define UI for application that draws a histogram
