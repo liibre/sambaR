@@ -110,4 +110,4 @@ both Genius and google translate.
 ## Shiny app
 
 A Shiny app was deployed and is available by running function
-`runExample()` or at <https://andreasancheztapia.shinyapps.io/sambaR/>
+`runExample()`

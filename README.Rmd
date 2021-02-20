@@ -58,9 +58,6 @@ library(googleLanguageR)
 ```
 
 
-```{r, echo=F}
-googleLanguageR::gl_auth("/Users/andreasancheztapia/Documents/3_coleguinhas/2021_carnaval/sambaR/inst/shiny-examples/sambaR/glkey.json")
-```
 
 ```{r ex2}
 ## basic example code
@@ -84,4 +81,4 @@ Lastly, the search will automatically create a subfolder with the artist's name 
 
 ## Shiny app
 
-A Shiny app was deployed and is available by running function `runExample()` or at https://andreasancheztapia.shinyapps.io/sambaR/
+A Shiny app was deployed and is available by running function `runExample()`
