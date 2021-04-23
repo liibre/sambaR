@@ -39,7 +39,7 @@ And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("AndreaSanchezTapia/sambaR")
+remotes::install_github("liibre/sambaR")
 ```
 
 ## Example
