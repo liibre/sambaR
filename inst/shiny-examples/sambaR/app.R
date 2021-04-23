@@ -9,29 +9,39 @@
 
 library(shiny)
 library(googleLanguageR)
-if (!require(sambaR)) remotes::install_github("andreasancheztapia/sambaR")
-library(sambaR)
+#if (!require(sambaR)) remotes::install_github("andreasancheztapia/sambaR")
+devtools::load_all()
+#library(sambaR)
 # Define UI for application that draws a histogram
 ui <- fluidPage(
     # Application title
-    titlePanel("sambaR: translate the samba songs for our carnaval 2021"),
+    titlePanel("sambaR"),
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
         sidebarPanel(
             textInput("Artist",
                       "Artist (capitalization does not matter, spelling does)",
-                      placeholder = "caetano veloso"),
+                      value = "caetano veloso"),
             textInput("Song",
                       "Song (capitalization does not matter, spelling does)",
-                      placeholder = "é hoje"),
+                      value = "é hoje"),
+            fluidRow(
+            column(width = 6,
             textInput("Target",
                       "Target language code",
-                      placeholder = "en"),
+                      value = "en",
+                      width = "300px"
+                      )
+            
+            ),
+            column(width = 6,
+                   
             actionButton(inputId = "Search",
                          label = "Search",
-                         icon = icon("music"))
-        ),
+                         icon = icon("music"),
+                         )
+            ))),
 
         # Show a plot of the generated distribution
         mainPanel(
@@ -44,12 +54,9 @@ ui <- fluidPage(
 server <- function(input, output) {
 observeEvent(input$Search,
     output$results <- renderTable({
-        # generate bins based on input$bins from ui.R
-     
-      
-      results <- translate_lyrics(artist = input$Artist,
+      results <- isolate(translate_lyrics(artist = input$Artist,
                                   song = input$Song,
-                                  target = input$Target)   
+                                  target = input$Target))   
     }))
 }
 

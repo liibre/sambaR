@@ -2,6 +2,7 @@
 
 export(runExample)
 export(translate_lyrics)
+importFrom(cld2,detect_language)
 importFrom(fs,path)
 importFrom(genius,genius_lyrics)
 importFrom(googleLanguageR,gl_translate)

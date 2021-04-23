@@ -4,7 +4,7 @@
 \alias{translate_lyrics}
 \title{Translate song lyrics}
 \usage{
-translate_lyrics(artist, song, target = "en", destdir = ".", ...)
+translate_lyrics(artist, song, target = NULL, destdir = "~", ...)
 }
 \arguments{
 \item{artist}{The quoted name of the artist. Spelling matters, capitalization
@@ -30,7 +30,8 @@ lyrics and the translation to avoid repeated queries to both databases
 }
 \examples{
 \dontrun{
-translate_lyrics(artist = "caetano veloso", song = "é hoje", target = "en")
-translate_lyrics(artist = "caetano veloso", song = "é hoje", target = "es")
+translate_lyrics(artist = "caetano veloso", song = "é hoje")
+translate_lyrics(artist = "caetano veloso",song = "é hoje", target = "fr")
+translate_lyrics(artist = "charly garcia", song = "los dinosaurios", target = "fr")
 }
 }

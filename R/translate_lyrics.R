@@ -19,17 +19,18 @@
 #' @importFrom readr read_csv write_csv  
 #' @importFrom googleLanguageR gl_translate
 #' @importFrom tibble tibble
+#' @importFrom cld2 detect_language
 #' @export 
-#'
 #' @examples
 #' \dontrun{
-#' translate_lyrics(artist = "caetano veloso", song = "é hoje", target = "en")
-#' translate_lyrics(artist = "caetano veloso", song = "é hoje", target = "es")
+#' translate_lyrics(artist = "caetano veloso", song = "é hoje")
+#' translate_lyrics(artist = "caetano veloso",song = "é hoje", target = "fr")
+#' translate_lyrics(artist = "charly garcia", song = "los dinosaurios", target = "fr")
 #' }
 translate_lyrics <- function(artist,
                              song,
-                             target = "en",
-                             destdir = ".",
+                             target = NULL,
+                             destdir = "~",
                              ...) {
   art_path <- fs::path(destdir, artist)
   if (!file.exists(art_path)) dir.create(art_path, recursive = T)
@@ -43,7 +44,11 @@ translate_lyrics <- function(artist,
     } else {
       lyric <- readr::read_csv(song_path)
     }
+  translation <- tibble::tibble(translatedText = "")
   if (!is.null(target)) {
+    detected <- names(which.max(table(cld2::detect_language(lyric$lyric))))
+    message("Language detected: ", detected)
+    if (target != detected) {
     tr_song_path <- fs::path(destdir,
                              artist,
                              paste(song, target, sep = "_"),
@@ -51,9 +56,11 @@ translate_lyrics <- function(artist,
     if (!file.exists(tr_song_path)) {
       translation <- googleLanguageR::gl_translate(lyric$lyric, target = target, ...)
       readr::write_csv(translation, file = tr_song_path)
-    } else {
+    } 
+    if (file.exists(tr_song_path))
         translation <- readr::read_csv(tr_song_path)
-      }
-  } else stop("set a target language, ex: 'en', 'es'")
-  return(tibble::tibble(lyric = lyric$lyric, translation = translation$translatedText))
+    return(tibble::tibble(lyric = lyric$lyric, translation = translation$translatedText))
+    } else message("target language is the same as the detected language")
+  } else message("no target language selected, returning lyrics")
+  return(tibble::tibble(lyric = lyric$lyric))
 }
