@@ -10,8 +10,7 @@
 library(shiny)
 library(googleLanguageR)
 #if (!require(sambaR)) remotes::install_github("andreasancheztapia/sambaR")
-devtools::load_all()
-#library(sambaR)
+library(sambaR)
 # Define UI for application that draws a histogram
 ui <- fluidPage(
     # Application title
