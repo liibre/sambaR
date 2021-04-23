@@ -118,6 +118,6 @@ A Shiny app was deployed and is available by running function
 
 ## Read more
 
-Genius tutorial: https://josiahparry.com/post/2019-05-08-genius-learnr-tutorial/
-googleLanguageR - Analysing language through the Google Cloud Machine Learning APIs: https://ropensci.org/blog/2017/10/03/googlelanguager/
+Genius tutorial: https://josiahparry.com/post/2019-05-08-genius-learnr-tutorial/  
+googleLanguageR - Analysing language through the Google Cloud Machine Learning APIs: https://ropensci.org/blog/2017/10/03/googlelanguager/  
 Package cld2: https://github.com/ropensci/cld2
