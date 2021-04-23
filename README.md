@@ -50,9 +50,7 @@ remotes::install_github("liibre/sambaR")
 There’s only one function in the package, `translate_lyrics()`
 
 ``` r
-devtools::load_all()
-#library(sambaR)
-library(googleLanguageR)
+library(sambaR)
 ```
 
 ``` r
@@ -60,8 +58,7 @@ library(googleLanguageR)
 hoje <- sambaR::translate_lyrics(
   artist = "caetano veloso",
   song = "é hoje",
-  target = "es",
-  destdir = "inst/shiny-examples/sambaR"
+  target = "es"
 )
 #> 
 #> ── Column specification ────────────────────────────────────────────────────────
@@ -100,21 +97,19 @@ hoje
 #> # … with 14 more rows
 ```
 
-If you do not set a target language, sambaR will only return the lyrics. 
-If the target language is the same as the source language, it will not call the translation,
++ If you do not set a target language, sambaR will only return the lyrics. 
++ If the target language is the same as the source language, it will not call the translation,
 to avoid charges and an unnecessary API call. Offline language detection if performed via cld2
 package
-
-
-I should add some error checks in case Genius doesn’t find the lyrics.
-Bear in mind that Genius doesn’t care about capitalization but it does
-about spelling *but* it does not work well with some non-ascii
-characters, so avoid accents and ç.
-
-Lastly, the search will automatically create a subfolder with the
-artist’s name and the lyrics, inside `destdir` (default: current wd).
++ The search will automatically create a subfolder with the
+artist’s name and the lyrics, inside `destdir` (default: home `~`).
 This is not optional for now and intends to avoid repeated queries to
 both Genius and google translate.
++ I should add some error checks in case Genius doesn’t find the lyrics.
+Bear in mind that Genius doesn’t care about capitalization but it does
+about spelling *but* it does not work consistently with some non-ascii
+characters, so try your searches with different options.
+
 
 ## Shiny app
 
