@@ -10,7 +10,8 @@ Download and translate songs from the Genius database and the google
 translate API. This package was created out of saudade to explain some
 samba lyrics to our friends in the US, but can be used to translate any
 lyrics available in the Genius database. Say you like Turkish music but
-don’t understand 99.7% of the lyrics (random example).
+don’t understand 99.7% of the lyrics (not so random example, I love you 
+[Kalben](https://twitter.com/kalbenben)).
 
 This is basically package `genius` meets package `googleLanguageR` and I
 thank everybody involved.
@@ -24,7 +25,9 @@ then configuring .Renviron (usually in `~/.Renviron`) with
 The package with autenthicate automatically when loading.
 
 I’ll try to detail this step better in the future but everything is in
-the `googleLanguageR` package documentation.
+the `googleLanguageR` package documentation. The google translate API is paid
+and charges per character, but there's a 90 day free trial and sambaR 
+saves everything on disk to avoid repeated API calls.
 
 ## Installation
 
@@ -97,6 +100,12 @@ hoje
 #> # … with 14 more rows
 ```
 
+If you do not set a target language, sambaR will only return the lyrics. 
+If the target language is the same as the source language, it will not call the translation,
+to avoid charges and an unnecessary API call. Offline language detection if performed via cld2
+package
+
+
 I should add some error checks in case Genius doesn’t find the lyrics.
 Bear in mind that Genius doesn’t care about capitalization but it does
 about spelling *but* it does not work well with some non-ascii
@@ -111,3 +120,9 @@ both Genius and google translate.
 
 A Shiny app was deployed and is available by running function
 `runExample()`
+
+## Read more
+
+Genius tutorial: https://josiahparry.com/post/2019-05-08-genius-learnr-tutorial/
+googleLanguageR - Analysing language through the Google Cloud Machine Learning APIs: https://ropensci.org/blog/2017/10/03/googlelanguager/
+Package cld2: https://github.com/ropensci/cld2
