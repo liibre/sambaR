@@ -31,14 +31,7 @@ saves everything on disk to avoid repeated API calls.
 
 ## Installation
 
-You can install the released version of sambaR from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("sambaR")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
